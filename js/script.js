@@ -1,15 +1,15 @@
 function formatDate(timestamp, typeTimestamp) {
     let date = new Date(timestamp * 1000);
-    let months = ["January","February","March","April","May","June","July",
-    "August","September","October","November","December"];
+    let months = ["January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"];
     let month = months[date.getMonth()];
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
+    let hours = "0" + date.getHours().substr(-2);
+    let minutes = "0" + date.getMinutes().substr(-2);
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let weekday = days[date.getDay()];
     let day = date.getDate();
-    
-    switch(day) {
+
+    switch (day) {
         case 1:
             day = `${day}st`;
             break;
@@ -20,7 +20,7 @@ function formatDate(timestamp, typeTimestamp) {
             day = `${day}th`;
     }
 
-    if(typeTimestamp === "fullTimestamp") {
+    if (typeTimestamp === "fullTimestamp") {
         return `${weekday}, ${month} ${day}, ${hours}:${minutes}`;
     } else if (typeTimestamp === "hoursMinsTimestamp") {
         return `${hours}:${minutes}`;
@@ -47,7 +47,7 @@ function displayTemperature(response) {
 
     minimumTempElement.innerHTML = Math.round(data.main.temp_min);
     maximumTempElement.innerHTML = Math.round(data.main.temp_max);
-    
+
     // Extra Info
     let sunriseElement = document.querySelector("#sunrise");
     let precipitationElement = document.querySelector("#precipitation");
