@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap");
+:root {
+  --lightpink: #ffb6b9;
+  --pink: #e95280;
+  --purple: #400082;
+  --yellow: #fcffc1;
+  --darkyellow: #ffdd7e;
+  --beige: #fae3d9;
+  --lightturquoise: #bbded6;
+  --mediumturquoise: #00bdaa;
+  --turquoise: #61c0bf;
+  /* --turquoisedarker: #9bf4d5; */
+  --white: #ffffff;
+  --lightgrey: #f8f8f8;
+  --grey: #bababa;
+  --darkgrey: #9ba6a5;
+}
+
+/* #fcffc1;  yellow*/
+/* #9bf4d5;  light turquoise */
+/* #1dad9b;  turquoise*/
+/* #346357; dark turquoise */
+
+body {
+  background-color: #e6fdfb !important;
+}
+
+.card-wrapper {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 50px 0;
+}
+
+.card-weather {
+  /* max-width: 992px; */
+  width: 65vw;
+  border: none !important;
+  border-radius: 25px !important;
+  box-shadow: 10px 10px 19px -8px rgb(0 0 0 / 75%);
+}
+
+.card-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-row .card-column {
+  padding: 15px;
+}
+
+/* CARD LEFT = CL */
+.card-row .card-column-left {
+  width: 35%;
+  color: white;
+  /* background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); */
+  background: var(--turquoise);
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.card-column-left .card-column-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* CL - SEARCH AREA */
+.card-column-left .search-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-column-info .search-area .btn-primary {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+}
+
+.card-column-info .search-area :not(.btn-check) + .btn:hover {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+  opacity: 0.7;
+}
+
+.card-column-info .search-area input.form-control {
+  outline: 0;
+  box-shadow: none;
+}
+
+.card-column-info .search-area input.form-control:focus {
+  border-color: var(--turquoise);
+}
+/* CL - WEATHER INFO */
+.card-column-left .weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  margin-top: 40px;
+  text-align: center;
+}
+
+.card-column-info .weather-info .bi-sun-fill {
+  font-size: 100px;
+  color: var(--yellow);
+}
+
+.card-column-info .weather-info span {
+  font-weight: 600;
+  color: var(--lightturquoise);
+}
+
+.card-column-info .weather-info .bi-thermometer-low,
+.card-column-info .weather-info .bi-thermometer-high {
+  color: var(--lightturquoise);
+  font-size: 18px;
+  margin-right: -5px;
+}
+/* CL - WEATHER EXTRAS */
+.card-column-info .weather-extra {
+  margin: 25px 0 15px 0;
+}
+
+.card-column-info .weather-extra span {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.card-column-info .weather-extra .bi {
+  font-size: 20px;
+  color: var(--pink);
+  margin-right: 5px;
+}
+
+.card-column-info .last-update {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lightturquoise);
+  font-size: 11px;
+}
+/**********************************************************/
+/* CARD RIGHT = CR */
+.card-row .card-column-right {
+  width: 65%;
+  background-color: white;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.card-column-right nav {
+  margin-top: -10px;
+}
+
+/* CR - TABS */
+.nav-tabs .nav-link,
+.nav-tabs .nav-link.active {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  color: var(--turquoise);
+  font-weight: 600;
+}
+.nav-tabs {
+  border-bottom: none !important;
+}
+
+.nav-tabs .nav-link {
+  border-width: 0 0 2px 0 !important;
+  border-color: transparent !important;
+  border-style: solid !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  color: var(--grey) !important;
+}
+
+.nav-tabs .nav-link.active {
+  border-color: var(--turquoise) !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--turquoise) !important;
+}
+
+.nav-tabs .nav-link .bi-star-fill {
+  color: var(--darkyellow);
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-link .bi-x {
+  color: var(--grey);
+  height: 19px;
+  line-height: 19px;
+  /* font-size: 12px; */
+}
+
+/* CR - FORECAST */
+.forecast-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-wrapper h2 {
+  font-size: 16px;
+  color: var(--pink);
+  font-weight: 700;
+  margin-bottom: 0;
+}
+/* CR - DAILY FORECAST */
+.forecast-wrapper .daily-forecast-wrapper .title-favorite {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.title-favorite button.toggle-favorite {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+}
+
+.title-favorite .bi-star {
+  color: var(--darkyellow);
+  font-size: 24px;
+}
+
+.forecast-wrapper .daily-forecast-wrapper .daily-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--lightgrey);
+  border-radius: 10px;
+  padding: 15px 4px;
+  margin-bottom: 25px;
+  box-shadow: 2px 3px 3px 1px rgb(220 220 220);
+
+}
+
+.daily-slider button.scroll-left,
+.daily-slider button.scroll-right {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+  color: var(--grey);
+  font-size: 18px;
+}
+
+.daily-slider button.scroll-left {
+  padding-right: 10px;
+}
+
+.daily-slider button.scroll-right {
+  padding-left: 10px;
+}
+
+.daily-slider button.scroll-left .bi::before,
+.daily-slider button.scroll-left [class*=" bi-"]::before,
+.daily-slider button.scroll-right .bi::before,
+.daily-slider button.scroll-right [class*=" bi-"]::before {
+  font-weight: 600 !important;
+}
+
+.forecast-wrapper .daily-forecast-wrapper .daily-slider .daily-slides {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: scroll;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.forecast-wrapper .daily-forecast-wrapper .daily-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.forecast-wrapper .daily-forecast-wrapper .daily-slider .daily-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 12%;
+  scroll-snap-align: center;
+  margin-right: 0px;
+  box-sizing: border-box;
+  transform-origin: center center;
+  transform: scale(1);
+}
+
+.daily-slides .daily-slide:first-of-type {
+  margin-left: -10px;
+}
+
+.daily-slider .daily-slide .hour,
+.daily-slider .daily-slide .temperature {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--turquoise);
+}
+
+/* CR - DAILY AND WEEKLY FORECAST */
+.daily-slider .daily-slide .weather .bi,
+.weekly-card-body .weather .bi {
+  font-size: 25px;
+  color: var(--pink);
+}
+
+/* CR - WEEKLY FORECAST */
+.forecast-wrapper .weekly-forecast-wrapper .weekly-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lightgrey);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  box-shadow: 2px 3px 3px 1px rgb(220 220 220);
+}
+
+.forecast-wrapper .weekly-forecast-wrapper .weekly-card:hover {
+  box-shadow: 2px 3px 3px 2px rgb(220 220 220);
+}
+
+.forecast-wrapper .weekly-forecast-wrapper .weekly-card.current-day {
+  background: var(--turquoise);
+}
+
+.forecast-wrapper .weekly-forecast-wrapper .weekly-card.current-day span {
+  color: white;
+}
+
+.forecast-wrapper .weekly-forecast-wrapper h2 {
+  margin-bottom: 10px;
+}
+
+.forecast-wrapper .weekly-forecast-wrapper .weekly-card .weekly-card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weekly-card-body .date {
+  min-width: 180px;
+}
+
+.weekly-card-body .min-max-temp {
+  min-width: 65px;
+}
+
+.weekly-card-body .date,
+.weekly-card-body .min-max-temp {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--turquoise);
+}
