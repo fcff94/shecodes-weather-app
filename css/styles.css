@@ -112,12 +112,16 @@ body {
   text-align: center;
 }
 
+.card-column-left .weather-info {
+  text-transform: capitalize;
+}
+
 .card-column-info .weather-info .bi-sun-fill {
   font-size: 100px;
   color: var(--yellow);
 }
 
-.card-column-info .weather-info span {
+.card-column-info .weather-info .min-max-temp {
   font-weight: 600;
   color: var(--lightturquoise);
 }
@@ -133,7 +137,7 @@ body {
   margin: 25px 0 15px 0;
 }
 
-.card-column-info .weather-extra span {
+.card-column-info .weather-extra .weather-extra-item {
   display: flex;
   align-items: center;
   font-weight: 600;
