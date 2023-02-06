@@ -3,8 +3,8 @@ function formatDate(timestamp, typeTimestamp) {
     let months = ["January", "February", "March", "April", "May", "June", "July",
         "August", "September", "October", "November", "December"];
     let month = months[date.getMonth()];
-    let hours = "0" + date.getHours().substr(-2);
-    let minutes = "0" + date.getMinutes().substr(-2);
+    let hours = "0" + date.getHours();
+    let minutes = "0" + date.getMinutes();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let weekday = days[date.getDay()];
     let day = date.getDate();
@@ -21,9 +21,9 @@ function formatDate(timestamp, typeTimestamp) {
     }
 
     if (typeTimestamp === "fullTimestamp") {
-        return `${weekday}, ${month} ${day}, ${hours}:${minutes}`;
+        return `${weekday}, ${month} ${day}, ${hours.substring((hours.length >= 3 ? 1 : 0), hours.length)}:${minutes.substring((minutes.length >= 3 ? 1 : 0), minutes.length)}`;
     } else if (typeTimestamp === "hoursMinsTimestamp") {
-        return `${hours}:${minutes}`;
+        return `${hours.substring((hours.length >= 3 ? 1 : 0), hours.length)}:${minutes.substring((minutes.length >= 3 ? 1 : 0), minutes.length)}`;
     }
 }
 
@@ -33,11 +33,13 @@ function displayTemperature(response) {
     // Main Weather Info 
     let dateElement = document.querySelector("#date");
     let cityElement = document.querySelector("#city");
+    let countryElement = document.querySelector("#country");
     let temperatureElement = document.querySelector("#temperature");
     let descriptionElement = document.querySelector("#weather-description");
 
     dateElement.innerHTML = formatDate(data.dt, "fullTimestamp");
-    cityElement.innerHTML = data.name;
+    cityElement.innerHTML = data.name + ", ";
+    countryElement.innerHTML = data.sys.country;
     temperatureElement.innerHTML = Math.round(data.main.temp);
     descriptionElement.innerHTML = data.weather[0].description;
 
