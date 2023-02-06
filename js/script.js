@@ -1,3 +1,29 @@
+function formatDate(timestamp) {
+    let date = new Date(timestamp * 1000);
+    console.log(date);
+    let months = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    let month = months[date.getMonth()];
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let weekday = days[date.getDay()];
+    let day = date.getDate();
+    
+    switch(day) {
+        case 1:
+            day = `${day}st`;
+            break;
+        case 2:
+            day = `${day}nd`;
+            break;
+        default:
+            day = `${day}th`;
+    }
+
+    return `${weekday}, ${month} ${day}, ${hours}:${minutes}`;
+}
+
 function displayTemperature(response) {
     console.log(response.data);
     let data = response.data;
@@ -7,6 +33,7 @@ function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature");
     let descriptionElement = document.querySelector("#weather-description");
 
+    dateElement.innerHTML = formatDate(data.dt);
     cityElement.innerHTML = data.name;
     temperatureElement.innerHTML = Math.round(data.main.temp);
     descriptionElement.innerHTML = data.weather[0].description;
