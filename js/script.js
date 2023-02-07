@@ -82,6 +82,7 @@ function displayTemperature(response) {
 }
 
 function handleSearch(e) {
+    console.log('ggg');
     e.preventDefault();
     let searchInputValue = document.querySelector("#search-input").value;
     getCity(searchInputValue);
@@ -106,8 +107,8 @@ function getCurrentLocation(data) {
     axios.get(apiUrl).then(displayTemperature);
 }
 
-let searchCityBtn = document.querySelector("#search-city");
-searchCityBtn.addEventListener('click', handleSearch);
+let searchForm = document.querySelector("#search-city-form");
+searchForm.addEventListener('click', handleSearch);
 
 let currentLocationBtn = document.querySelector("#current-location");
 currentLocationBtn.addEventListener('click', handleCurrentLocation);
