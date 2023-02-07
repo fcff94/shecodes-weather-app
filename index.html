@@ -25,11 +25,11 @@
 					<div class="card-column card-column-left">
 						<div class="card-column-info">
 							<div class="search-area">
-								<input type="search" class="form-control" placeholder="City name..." />
-								<button type="button" class="btn btn-primary ms-1">
+								<input type="search" class="form-control" placeholder="City name..." id="search-input" />
+								<button type="button" class="btn btn-primary ms-1" id="search-city">
 									<i class="bi bi-search"></i>
 								</button>
-								<button type="button" class="btn btn-primary mx-1">
+								<button type="button" class="btn btn-primary mx-1" id="current-location">
 									<i class="bi bi-geo-alt-fill"></i>
 								</button>
 								<button type="button" class="btn btn-primary">Fº</button>
@@ -37,7 +37,7 @@
 
 							<div class="weather-info">
 								<h6 id="date">Monday, May 10th, 16:54</h6>
-								<h2 class="mb-0"><span id="city">Lisbon</span><span id="country">Portugal</span></h2>
+								<h2 class="mb-0"><span id="city">Lisbon, </span><span id="country">Portugal</span></h2>
 								<div class="d-flex align-items-center justify-content-evenly w-100">
 									<i class="bi bi-sun-fill"></i>
 									<div class="d-flex flex-column align-items-center">
@@ -361,32 +361,34 @@
 		crossorigin="anonymous"></script>
 
 </body>
-
 <!--
+
 WEATHER STATES
-Sol
-<i class="bi bi-sun-fill"></i>
-Nuvens
-<i class="bi bi-clouds-fill"></i>
-Sol e Nuvens
-<i class="bi bi-cloud-sun-fill"></i>
-Lua e Nuvens
-<i class="bi bi-cloud-moon-fill"></i>
-Lua
+Céu limpo dia - 01d
+<i class="bi bi-sun-fill day"></i>
+Céu limpo noite - Lua - 01n
 <i class="bi bi-moon-stars-fill"></i>
-Neve
-<i class="bi bi-cloud-snow-fill"></i>
-Nevoeiro
-<i class="bi bi-cloud-haze2-fill"></i>
-Chuva e Trovoada
-<i class="bi bi-cloud-lightning-rain-fill"></i>
-Trovoada
-<i class="bi bi-cloud-lightning-fill"></i>
-Chuva intensa
+Sol e Nuvens - 02d - Few clouds
+<i class="bi bi-cloud-sun-fill"></i>
+Lua e Nuvens - 02n
+<i class="bi bi-cloud-moon-fill"></i>
+Scattered Clouds - poucas nuvens - 03d 03n
+<i class="bi bi-cloud-fill"></i>
+Nuvens - broken clouds - 04d 04n
+<i class="bi bi-clouds-fill"></i>
+Chuva intensa - 09d 09n
 <i class="bi bi-cloud-rain-heavy-fill"></i>
-Chuva fraca
+Chuva fraca - 10d 10n
 <i class="bi bi-cloud-rain-fill"></i>
-Granizo
+Neve - 13d 13n
+<i class="bi bi-cloud-snow-fill"></i>
+Nevoeiro - 50d 50n
+<i class="bi bi-cloud-haze2-fill"></i>
+Chuva e Trovoada - id 200 201 202 - 11d
+<i class="bi bi-cloud-lightning-rain-fill"></i>
+Trovoada - 11d 11n
+<i class="bi bi-cloud-lightning-fill"></i>
+Granizo - id 611 612 613 - 13d
 <i class="bi bi-cloud-sleet-fill"></i>
 
 ICONS TO BE USED

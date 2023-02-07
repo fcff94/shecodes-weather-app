@@ -7,17 +7,32 @@ function formatDate(timestamp, typeTimestamp) {
     let minutes = "0" + date.getMinutes();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let weekday = days[date.getDay()];
-    let day = date.getDate();
-
+    let day = date.getDate().toString();
+    
     switch (day) {
-        case 1:
+        case "1":
             day = `${day}st`;
             break;
-        case 2:
+        case "2":
             day = `${day}nd`;
+            break;
+        case "3":
+            day = `${day}rd`;
             break;
         default:
             day = `${day}th`;
+    }
+
+    switch (day[1]) {
+        case "1":
+            day = `${day}st`;
+            break;
+        case "2":
+            day = `${day}nd`;
+            break;
+        case "3":
+            day = `${day}rd`;
+            break;
     }
 
     if (typeTimestamp === "fullTimestamp") {
@@ -66,7 +81,33 @@ function displayTemperature(response) {
     thermalSensationElement.innerHTML = Math.round(data.main.feels_like);
 }
 
-let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&units=metric&appid=${apiKey}`;
+function handleSearch(e) {
+    e.preventDefault();
+    let searchInputValue = document.querySelector("#search-input").value;
+    getCity(searchInputValue);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function getCity(city) {
+    let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;    
+    axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleCurrentLocation(e) {
+    e.preventDefault();
+    navigator.geolocation.getCurrentPosition(getCurrentLocation);
+}
+
+function getCurrentLocation(data) {
+    let lat = data.coords.latitude;
+    let lon = data.coords.longitude;
+    let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;    
+    axios.get(apiUrl).then(displayTemperature);
+}
+
+let searchCityBtn = document.querySelector("#search-city");
+searchCityBtn.addEventListener('click', handleSearch);
+
+let currentLocationBtn = document.querySelector("#current-location");
+currentLocationBtn.addEventListener('click', handleCurrentLocation);
