@@ -41,48 +41,6 @@ function formatDate(timestamp, typeTimestamp) {
     }
 }
 
-function displayTemperature(response) {
-    console.log(response.data);
-    let data = response.data;
-    // Main Weather Info 
-    let dateElement = document.querySelector("#date");
-    let cityElement = document.querySelector("#city");
-    let countryElement = document.querySelector("#country");
-    let temperatureElement = document.querySelector("#temperature");
-    let descriptionElement = document.querySelector("#weather-description");
-    setWeatherIcon(data);
-
-    dateElement.innerHTML = formatDate(data.dt, "fullTimestamp");
-    cityElement.innerHTML = data.name + ", ";
-    countryElement.innerHTML = data.sys.country;
-    celsiusTemp = data.main.temp;
-    temperatureElement.innerHTML = Math.round(celsiusTemp);
-    descriptionElement.innerHTML = data.weather[0].description;
-
-
-    // Min and Max Temperatures
-    let minimumTempElement = document.querySelector("#min-temp");
-    let maximumTempElement = document.querySelector("#max-temp");
-
-    minimumTempElement.innerHTML = Math.round(data.main.temp_min);
-    maximumTempElement.innerHTML = Math.round(data.main.temp_max);
-
-    // Extra Info
-    let sunriseElement = document.querySelector("#sunrise");
-    let precipitationElement = document.querySelector("#precipitation");
-    let windElement = document.querySelector("#wind");
-    let sunsetElement = document.querySelector("#sunset");
-    let humidityElement = document.querySelector("#humidity");
-    let thermalSensationElement = document.querySelector("#thermal-sensation");
-
-    sunriseElement.innerHTML = formatDate(data.sys.sunrise, "hoursMinsTimestamp");
-    precipitationElement.innerHTML = "10";
-    windElement.innerHTML = data.wind.speed;
-    sunsetElement.innerHTML = formatDate(data.sys.sunset, "hoursMinsTimestamp");
-    humidityElement.innerHTML = data.main.humidity;
-    thermalSensationElement.innerHTML = Math.round(data.main.feels_like);
-}
-
 function setWeatherIcon(data) {
     let iconWeatherElement = document.querySelector("#icon-weather");
     let iconWeatherElementCode = data.weather[0].icon;
@@ -136,6 +94,55 @@ function setWeatherIcon(data) {
     }
 }
 
+function displayTemperature(response) {
+    console.log(response.data);
+    let data = response.data;
+    // Main Weather Info 
+    let dateElement = document.querySelector("#date");
+    let cityElement = document.querySelector("#city");
+    let countryElement = document.querySelector("#country");
+    let temperatureElement = document.querySelector("#temperature");
+    let descriptionElement = document.querySelector("#weather-description");
+    setWeatherIcon(data);
+
+    dateElement.innerHTML = formatDate(data.dt, "fullTimestamp");
+    cityElement.innerHTML = data.name + ", ";
+    countryElement.innerHTML = data.sys.country;
+    celsiusTemp = data.main.temp;
+    temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    descriptionElement.innerHTML = data.weather[0].description;
+
+
+    // Min and Max Temperatures
+    let minimumTempElement = document.querySelector("#min-temp");
+    let maximumTempElement = document.querySelector("#max-temp");
+
+    minTemp = data.main.temp_min;
+    maxTemp = data.main.temp_max;
+
+    minimumTempElement.innerHTML = Math.round(minTemp) + "ºC";
+    maximumTempElement.innerHTML = Math.round(maxTemp) + "ºC";
+
+    // Extra Info
+    let sunriseElement = document.querySelector("#sunrise");
+    let precipitationElement = document.querySelector("#precipitation");
+    let windElement = document.querySelector("#wind");
+    let sunsetElement = document.querySelector("#sunset");
+    let humidityElement = document.querySelector("#humidity");
+    let thermalSensationElement = document.querySelector("#thermal-sensation");
+
+    sunriseElement.innerHTML = formatDate(data.sys.sunrise, "hoursMinsTimestamp");
+    precipitationElement.innerHTML = "10";
+    windElement.innerHTML = data.wind.speed;
+    sunsetElement.innerHTML = formatDate(data.sys.sunset, "hoursMinsTimestamp");
+    humidityElement.innerHTML = data.main.humidity;
+    thermalSensationElement.innerHTML = Math.round(thermalSensationTemp) + "ºC";
+
+    thermalSensationTemp = data.main.feels_like;
+}
+
+
+
 function handleSearch(e) {
     e.preventDefault();
     let searchInputValue = document.querySelector("#search-input").value;
@@ -164,27 +171,46 @@ function getCurrentLocation(data) {
 function convertToFahrenheit(e) {
     e.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
-    let c = document.querySelector('#celsius');
-    let f = document.querySelector('#fahrenheit');
-    c.classList.remove('d-none');
-    f.classList.add('d-none');
-    let fahrenheitFormula = (celsiusTemp * 1.8) + 32;
-    temperatureElement.innerHTML = Math.round(fahrenheitFormula);
+    let minTemperatureElement = document.querySelector("#min-temp");
+    let maxTemperatureElement = document.querySelector("#max-temp");
+    let thermalSensationElement = document.querySelector("#thermal-sensation");
+
+    toCelsius.classList.remove('d-none');
+    toFahrenheit.classList.add('d-none');
+
+    temperatureElement.innerHTML = convertTemperatures(celsiusTemp) + "ºF";
+    minTemperatureElement.innerHTML = convertTemperatures(minTemp) + "ºF";
+    maxTemperatureElement.innerHTML = convertTemperatures(maxTemp) + "ºF";
+    thermalSensationElement.innerHTML = convertTemperatures(thermalSensationTemp) + "ºF";
+}
+
+function convertTemperatures(tempType) {
+    let fahrenheitFormula = Math.round((tempType * 1.8) + 32);
+    return fahrenheitFormula;
 }
 
 function convertToCelsius(e) {
     e.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
-    let c = document.querySelector('#celsius');
-    let f = document.querySelector('#fahrenheit');
-    c.classList.add('d-none');
-    f.classList.remove('d-none');
-    temperatureElement.innerHTML = Math.round(celsiusTemp);
-    console.log(celsiusTemp);
+    let minTemperatureElement = document.querySelector("#min-temp");
+    let maxTemperatureElement = document.querySelector("#max-temp");
+    let thermalSensationElement = document.querySelector("#thermal-sensation");
+    
+    toCelsius.classList.add('d-none');
+    toFahrenheit.classList.remove('d-none');
+
+    temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    minTemperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    maxTemperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    thermalSensationElement.innerHTML = Math.round(celsiusTemp) + "ºC";
 
 }
 
 let celsiusTemp = null;
+let minTemp = null;
+let maxTemp = null;
+let thermalSensationTemp = null;
 
 let searchForm = document.querySelector("#search-city-form");
 searchForm.addEventListener('click', handleSearch);
