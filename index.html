@@ -24,23 +24,26 @@
 				<div class="card-row">
 					<div class="card-column card-column-left">
 						<div class="card-column-info">
-							<form id="search-city-form" class="search-area">
-								<input type="search" class="form-control" placeholder="City name..."
-									id="search-input" />
-								<button type="button" class="btn btn-primary ms-1" id="search-city">
-									<i class="bi bi-search"></i>
-								</button>
-								<button type="button" class="btn btn-primary mx-1" id="current-location">
-									<i class="bi bi-geo-alt-fill"></i>
-								</button>
-								<button type="button" class="btn btn-primary">Fº</button>
-							</form>
+							<div class="search-area">
+								<form id="search-city-form" class="d-flex">
+									<input type="search" class="form-control" placeholder="City name..."
+										id="search-input" />
+									<button type="button" class="btn btn-primary ms-1" id="search-city">
+										<i class="bi bi-search"></i>
+									</button>
+									<button type="button" class="btn btn-primary mx-1" id="current-location">
+										<i class="bi bi-geo-alt-fill"></i>
+									</button>
+								</form>
+								<button id="celsius" type="button" class="btn btn-primary d-none units-button">ºC</button>
+								<button id="fahrenheit" type="button" class="btn btn-primary units-button">ºF</button>
+							</div>
 
 							<div class="weather-info">
-								<h6 id="date">Monday, May 10th, 16:54</h6>
-								<h2 class="mb-0"><span id="city">Lisbon, </span><span id="country">Portugal</span></h2>
+								<h6 id="date"></h6>
+								<h2 class="mb-0"><span id="city"></span><span id="country"></span></h2>
 								<div class="d-flex align-items-center justify-content-evenly w-100">
-									<i class="bi bi-sun-fill"></i>
+									<span id="icon-weather"><i class="bi bi-sun-fill"></i></span>
 									<div class="d-flex flex-column align-items-center">
 										<h1 class="mb-0"><span id="temperature">25</span>ºC</h1>
 										<h3 class="description" id="weather-description">Clear Sky</h3>
@@ -62,26 +65,25 @@
 								<div class="row d-flex justify-content-around">
 									<div class="col-4 d-flex flex-column">
 										<div class="weather-extra-item">
-											<i class="bi bi-sunrise-fill"></i><span id="sunrise">07:30</span>
+											<i class="bi bi-sunrise-fill"></i><span id="sunrise"></span>
 										</div>
 										<div class="weather-extra-item">
-											<i class="bi bi-umbrella-fill"></i><span id="precipitation">30</span>%
+											<i class="bi bi-umbrella-fill"></i><span id="precipitation"></span>%
 										</div>
 										<div class="weather-extra-item">
-											<i class="bi bi-wind"></i><span id="wind">2 </span>Km/h
+											<i class="bi bi-wind"></i><span id="wind"></span>Km/h
 										</div>
 									</div>
 
 									<div class="col-4 d-flex flex-column">
 										<div class="weather-extra-item">
-											<i class="bi bi-sunset-fill"></i><span id="sunset">20:30</span>
+											<i class="bi bi-sunset-fill"></i><span id="sunset"></span>
 										</div>
 										<div class="weather-extra-item">
-											<i class="bi bi-droplet-fill"></i><span id="humidity">15</span>%
+											<i class="bi bi-droplet-fill"></i><span id="humidity"></span>%
 										</div>
 										<div class="weather-extra-item">
-											<i class="bi bi-thermometer-half"></i><span
-												id="thermal-sensation">27</span>º
+											<i class="bi bi-thermometer-half"></i><span id="thermal-sensation"></span>º
 										</div>
 									</div>
 								</div>
@@ -368,7 +370,7 @@
 
 WEATHER STATES
 Céu limpo dia - 01d
-<i class="bi bi-sun-fill day"></i>
+<i class="bi bi-sun-fill"></i>
 Céu limpo noite - Lua - 01n
 <i class="bi bi-moon-stars-fill"></i>
 Sol e Nuvens - 02d - Few clouds
@@ -387,6 +389,8 @@ Neve - 13d 13n
 <i class="bi bi-cloud-snow-fill"></i>
 Nevoeiro - 50d 50n
 <i class="bi bi-cloud-haze2-fill"></i>
+
+
 Chuva e Trovoada - id 200 201 202 - 11d
 <i class="bi bi-cloud-lightning-rain-fill"></i>
 Trovoada - 11d 11n

@@ -101,6 +101,10 @@ body {
 .card-column-info .search-area input.form-control:focus {
   border-color: var(--turquoise);
 }
+
+.search-area .units-button {
+  max-width: 42px;
+}
 /* CL - WEATHER INFO */
 .card-column-left .weather-info {
   display: flex;
@@ -116,7 +120,7 @@ body {
   text-transform: capitalize;
 }
 
-.card-column-info .weather-info .bi-sun-fill {
+.card-column-info .weather-info #icon-weather .bi {
   font-size: 100px;
   color: var(--yellow);
 }
