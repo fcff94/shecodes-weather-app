@@ -168,7 +168,16 @@ function getCurrentLocation(data) {
     axios.get(apiUrl).then(displayTemperature);
 }
 
-function convertToFahrenheit(e) {
+function convertAllTemperatures(temperatureType, unit) {
+    if(unit === "f") {
+        let fahrenheitFormula = Math.round((temperatureType * 1.8) + 32) + "ºF";
+        return fahrenheitFormula;
+    } else if (unit === "c") {
+        return Math.round(temperatureType) + "ºC";
+    }
+}
+
+function changeToFahrenheit(e) {
     e.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
     let minTemperatureElement = document.querySelector("#min-temp");
@@ -178,18 +187,14 @@ function convertToFahrenheit(e) {
     toCelsius.classList.remove('d-none');
     toFahrenheit.classList.add('d-none');
 
-    temperatureElement.innerHTML = convertTemperatures(celsiusTemp) + "ºF";
-    minTemperatureElement.innerHTML = convertTemperatures(minTemp) + "ºF";
-    maxTemperatureElement.innerHTML = convertTemperatures(maxTemp) + "ºF";
-    thermalSensationElement.innerHTML = convertTemperatures(thermalSensationTemp) + "ºF";
+    temperatureElement.innerHTML = convertAllTemperatures(celsiusTemp, "f");
+    minTemperatureElement.innerHTML = convertAllTemperatures(minTemp, "f");
+    maxTemperatureElement.innerHTML = convertAllTemperatures(maxTemp, "f");
+    thermalSensationElement.innerHTML = convertAllTemperatures(thermalSensationTemp, "f");
 }
 
-function convertTemperatures(tempType) {
-    let fahrenheitFormula = Math.round((tempType * 1.8) + 32);
-    return fahrenheitFormula;
-}
 
-function convertToCelsius(e) {
+function changeToCelsius(e) {
     e.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
     let minTemperatureElement = document.querySelector("#min-temp");
@@ -199,11 +204,10 @@ function convertToCelsius(e) {
     toCelsius.classList.add('d-none');
     toFahrenheit.classList.remove('d-none');
 
-    temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
-    temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
-    minTemperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
-    maxTemperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
-    thermalSensationElement.innerHTML = Math.round(celsiusTemp) + "ºC";
+    temperatureElement.innerHTML = convertAllTemperatures(celsiusTemp, "c");
+    minTemperatureElement.innerHTML = convertAllTemperatures(minTemp, "c");
+    maxTemperatureElement.innerHTML = convertAllTemperatures(maxTemp, "c");
+    thermalSensationElement.innerHTML = convertAllTemperatures(thermalSensationTemp, "c");
 
 }
 
@@ -219,9 +223,9 @@ let currentLocationBtn = document.querySelector("#current-location");
 currentLocationBtn.addEventListener('click', handleCurrentLocation);
 
 let toFahrenheit = document.querySelector('#fahrenheit');
-toFahrenheit.addEventListener('click', convertToFahrenheit);
+toFahrenheit.addEventListener('click', changeToFahrenheit);
 
 let toCelsius = document.querySelector('#celsius');
-toCelsius.addEventListener('click', convertToCelsius);
+toCelsius.addEventListener('click', changeToCelsius);
 
 getCity("London");
