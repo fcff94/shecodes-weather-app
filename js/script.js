@@ -19,8 +19,6 @@ function formatDate(timestamp, typeTimestamp) {
         case "3":
             day = `${day}rd`;
             break;
-        default:
-            day = `${day}th`;
     }
 
     switch (day[1]) {
@@ -33,7 +31,10 @@ function formatDate(timestamp, typeTimestamp) {
         case "3":
             day = `${day}rd`;
             break;
+        default:
+            day = `${day}th`;
     }
+
     if (typeTimestamp === "fullTimestamp") {
         return `${weekday}, ${month} ${day}, ${hours.substring((hours.length >= 3 ? 1 : 0), hours.length)}:${minutes.substring((minutes.length >= 3 ? 1 : 0), minutes.length)}`;
     } else if (typeTimestamp === "hoursMinsTimestamp") {
@@ -169,7 +170,7 @@ function getCurrentLocation(data) {
 }
 
 function convertAllTemperatures(temperatureType, unit) {
-    if(unit === "f") {
+    if (unit === "f") {
         let fahrenheitFormula = Math.round((temperatureType * 1.8) + 32) + "ºF";
         return fahrenheitFormula;
     } else if (unit === "c") {
@@ -200,7 +201,7 @@ function changeToCelsius(e) {
     let minTemperatureElement = document.querySelector("#min-temp");
     let maxTemperatureElement = document.querySelector("#max-temp");
     let thermalSensationElement = document.querySelector("#thermal-sensation");
-    
+
     toCelsius.classList.add('d-none');
     toFahrenheit.classList.remove('d-none');
 
@@ -208,7 +209,32 @@ function changeToCelsius(e) {
     minTemperatureElement.innerHTML = convertAllTemperatures(minTemp, "c");
     maxTemperatureElement.innerHTML = convertAllTemperatures(maxTemp, "c");
     thermalSensationElement.innerHTML = convertAllTemperatures(thermalSensationTemp, "c");
+}
 
+function displayWeeklyForecast() {
+    let weeklyForecastElement = document.querySelector("#weekly-forecast");
+
+    let weeklyForecastHTML = `<h2>Weekly Forecast</h2>`;
+
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+    days.forEach(function (day) {
+        weeklyForecastHTML = weeklyForecastHTML +
+            `
+        <div class="weekly-card">
+            <div class="weekly-card-body">
+                <span class="date">${day}</span>
+                <span class="weather">
+                    <i class="bi bi-cloud-sun-fill"></i>
+                </span>
+                <span class="min-max-temp">
+                    12º / 25º
+                </span>
+            </div>
+        </div>
+        `;
+    })
+    weeklyForecastElement.innerHTML = weeklyForecastHTML;
 }
 
 let celsiusTemp = null;
@@ -227,5 +253,5 @@ toFahrenheit.addEventListener('click', changeToFahrenheit);
 
 let toCelsius = document.querySelector('#celsius');
 toCelsius.addEventListener('click', changeToCelsius);
-
+displayWeeklyForecast();
 getCity("London");
