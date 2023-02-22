@@ -43,7 +43,8 @@ function formatDate(timestamp, typeTimestamp) {
 }
 
 function setWeatherIcon(data) {
-    let iconWeatherElement = document.querySelector("#icon-weather");
+    let iconWeatherElement = document.querySelector(".icon-weather");
+    console.log(iconWeatherElement);
     let iconWeatherElementCode = data.weather[0].icon;
     let iconWeatherElementID = data.weather[0].id;
 
@@ -140,9 +141,9 @@ function displayTemperature(response) {
     thermalSensationElement.innerHTML = Math.round(thermalSensationTemp) + "ºC";
 
     thermalSensationTemp = data.main.feels_like;
+
+    getCoordinates(data.coord);
 }
-
-
 
 function handleSearch(e) {
     e.preventDefault();
@@ -211,30 +212,49 @@ function changeToCelsius(e) {
     thermalSensationElement.innerHTML = convertAllTemperatures(thermalSensationTemp, "c");
 }
 
-function displayWeeklyForecast() {
+
+function displayWeeklyForecast(resp) {
+    // let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    // let minTemp = [];
+    // let maxTemp = [];
+    let dailyInfo = resp.data.daily;
+    // console.log(dailyInfo);
+    
+    // console.log(resp.data);
     let weeklyForecastElement = document.querySelector("#weekly-forecast");
-
+    
     let weeklyForecastHTML = `<h2>Weekly Forecast</h2>`;
-
-    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
-    days.forEach(function (day) {
-        weeklyForecastHTML = weeklyForecastHTML +
-            `
+    
+    dailyInfo.forEach(function (day, i) {
+        // let weekday = days[i];
+        // let icon = setWeatherIcon(dailyInfo);
+        // console.log(icon);
+        console.log(day);
+        weeklyForecastHTML += 
+        `
         <div class="weekly-card">
             <div class="weekly-card-body">
-                <span class="date">${day}</span>
-                <span class="weather">
-                    <i class="bi bi-cloud-sun-fill"></i>
+                <span class="date">${day.dt}</span>
+                <span class="weather icon-weather" id="daily-icon-weather">
                 </span>
                 <span class="min-max-temp">
-                    12º / 25º
+                ${Math.round(day.temp.min)}º / ${Math.round(day.temp.max)}º
                 </span>
-            </div>
-        </div>
-        `;
-    })
+                </div>
+                </div>
+                `;
+            });
+            
+            // ${console.log(setWeatherIcon(day))}
+            // <i class="bi bi-cloud-sun-fill"></i>
     weeklyForecastElement.innerHTML = weeklyForecastHTML;
+}
+
+function getCoordinates(coordinates) {
+    console.log(coordinates);
+    let apiKey = "ed238469f9b5e9d801834270e65449bc";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeeklyForecast);
 }
 
 let celsiusTemp = null;
@@ -253,5 +273,4 @@ toFahrenheit.addEventListener('click', changeToFahrenheit);
 
 let toCelsius = document.querySelector('#celsius');
 toCelsius.addEventListener('click', changeToCelsius);
-displayWeeklyForecast();
 getCity("London");
