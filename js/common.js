@@ -41,4 +41,26 @@ function formatDate(timestamp, typeTimestamp) {
 
 
 
+  // Common to dailyForecast and weeklyForecast
+  function getCoordinates(coordinates) {
+    let apiKey = "ed238469f9b5e9d801834270e65449bc";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeeklyForecast);
+    axios.get(apiUrl).then(displayDailyForecast);
+  }
   
+  function formatDateForecast(timestamp, isWeekly) {
+    let date = new Date(timestamp * 1000);
+    let month = months[date.getMonth()];
+    let weekday = days[date.getDay()];
+    let hours = date.getHours();
+    let day = addDaySuffix(date.getDate().toString());
+
+    if(isWeekly) {
+      return `${weekday}, ${month} ${day}`;
+    } else {
+      return `${hours}:00`;
+
+    }
+  
+  }

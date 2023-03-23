@@ -7,14 +7,14 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let descriptionElement = document.querySelector("#weather-description");
   let iconElement = document.querySelector("#icon-weather");
-  iconElement.innerHTML = setWeatherIcon(data.weather[0]);
-
+  
   dateElement.innerHTML = formatDate(data.dt, "fullTimestamp");
   cityElement.innerHTML = data.name + ", ";
   countryElement.innerHTML = data.sys.country;
   celsiusTemp = data.main.temp;
   temperatureElement.innerHTML = Math.round(celsiusTemp) + "ºC";
   descriptionElement.innerHTML = data.weather[0].description;
+  iconElement.innerHTML = setWeatherIcon(data.weather[0]);
 
   // Min and Max Temperatures
   let minimumTempElement = document.querySelector("#min-temp");

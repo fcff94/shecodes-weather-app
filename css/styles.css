@@ -340,6 +340,10 @@ body {
   color: var(--pink);
 }
 
+.daily-slider .icon-weather-hourly {
+  color: var(--pink);
+}
+
 /* CR - WEEKLY FORECAST */
 .forecast-wrapper .weekly-forecast-wrapper .weekly-card {
   display: flex;
