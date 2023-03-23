@@ -7,15 +7,12 @@ function formatDate(timestamp, typeTimestamp) {
     let day = addDaySuffix(date.getDate().toString());
   
     if (typeTimestamp === "fullTimestamp") {
-      return `${weekday}, ${month} ${day}, ${hours.substring(
-        hours.length >= 3 ? 1 : 0,
-        hours.length
-      )}:${minutes.substring(minutes.length >= 3 ? 1 : 0, minutes.length)}`;
+      return `${weekday}, ${month} ${day}, ${hours.substring(hours.length === 3 ? 1 : 0, hours.length)}:${minutes.substring(minutes.length >= 3 ? 1 : 0, minutes.length)}`;
     } else if (typeTimestamp === "hoursMinsTimestamp") {
       return `${hours.substring(
-        hours.length >= 3 ? 1 : 0,
+        hours.length === 3 ? 1 : 0,
         hours.length
-      )}:${minutes.substring(minutes.length >= 3 ? 1 : 0, minutes.length)}`;
+      )}:${minutes.substring(minutes.length === 3 ? 1 : 0, minutes.length)}`;
     }
   }
   
