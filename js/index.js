@@ -6,7 +6,8 @@ function displayTemperature(response) {
   let countryElement = document.querySelector("#country");
   let temperatureElement = document.querySelector("#temperature");
   let descriptionElement = document.querySelector("#weather-description");
-  setWeatherIcon(data.weather[0], "icon-weather");
+  let iconElement = document.querySelector("#icon-weather");
+  iconElement.innerHTML = setWeatherIcon(data.weather[0]);
 
   dateElement.innerHTML = formatDate(data.dt, "fullTimestamp");
   cityElement.innerHTML = data.name + ", ";

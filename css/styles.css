@@ -374,6 +374,9 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.weekly-card-body .icon-weather-weekly {
+  color: var(--pink);
+}
 
 .weekly-card-body .date {
   min-width: 180px;

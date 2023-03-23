@@ -4,8 +4,9 @@ function displayWeeklyForecast(resp) {
 
   let weeklyForecastHTML = `<h2>Weekly Forecast</h2>`;
 
-  dailyInfo.forEach(function (day, i) {
-    console.log(day.weather[0]);
+  dailyInfo.forEach(function (day, i) { 
+    console.log(day.weather[0].main);
+    console.log(day.weather[0].description);
 
     weeklyForecastHTML += `
           <div class="weekly-card">
@@ -14,9 +15,7 @@ function displayWeeklyForecast(resp) {
                   ${i === 0 ? "Today" : formatDateForecast(day.dt)}
                   </span>
                   <span class="icon-weather icon-weather-weekly">
-                  ${setTimeout(() => {
-                    setWeatherIcon(day.weather[0], "icon-weather-weekly");
-                  }, 50)}
+                  ${setWeatherIcon(day.weather[0])}
                   </span>
                   <span class="min-max-temp">
                   ${Math.round(day.temp.min)}º / ${Math.round(day.temp.max)}º
