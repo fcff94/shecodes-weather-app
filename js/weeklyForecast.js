@@ -4,9 +4,7 @@ function displayWeeklyForecast(resp) {
 
   let weeklyForecastHTML = `<h2>Weekly Forecast</h2>`;
 
-  dailyInfo.forEach(function (day, i) { 
-    console.log(day.weather[0].main);
-    console.log(day.weather[0].description);
+  dailyInfo.forEach(function (day, i) {
 
     weeklyForecastHTML += `
           <div class="weekly-card">
