@@ -33,6 +33,7 @@ function displayTemperature(response) {
   let sunsetElement = document.querySelector("#sunset");
   let humidityElement = document.querySelector("#humidity");
   let thermalSensationElement = document.querySelector("#thermal-sensation");
+  let lastUpdateElement = document.querySelector("#last-update");
 
   sunriseElement.innerHTML = formatDate(data.sys.sunrise, "hoursMinsTimestamp");
   precipitationElement.innerHTML = "10";
@@ -40,11 +41,14 @@ function displayTemperature(response) {
   sunsetElement.innerHTML = formatDate(data.sys.sunset, "hoursMinsTimestamp");
   humidityElement.innerHTML = data.main.humidity;
   thermalSensationElement.innerHTML = Math.round(thermalSensationTemp) + "ºC";
+  lastUpdateElement.innerHTML = "Last update: " + formatDate(data.dt, "dayHoursMinsTimestamp");
 
   thermalSensationTemp = data.main.feels_like;
 
   getCoordinates(data.coord);
 }
+
+
 
 function handleSearch(e) {
   e.preventDefault();
@@ -52,13 +56,9 @@ function handleSearch(e) {
   getCity(searchInputValue);
 }
 
-function getCity(city) {
-  let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayTemperature);
-}
+
 
 let searchForm = document.querySelector("#search-city-form");
 searchForm.addEventListener("click", handleSearch);
 
-getCity("London");
+getCity("Lisbon");

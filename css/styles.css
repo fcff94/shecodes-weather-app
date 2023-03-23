@@ -252,6 +252,7 @@ body {
 }
 
 .forecast-wrapper .daily-forecast-wrapper .daily-slider {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;

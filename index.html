@@ -89,7 +89,7 @@
 								</div>
 							</div>
 							<div class="last-update">
-								<p>Last updated: Monday 16:54</p>
+								<p id="last-update">Last updated: Monday 16:54</p>
 							</div>
 						</div>
 					</div>
@@ -99,10 +99,10 @@
 								<button class="nav-link active" id="pills-current-city-tab" data-bs-toggle="pill"
 									data-bs-target="#pills-current-city" type="button" role="tab"
 									aria-controls="pills-current-city" aria-selected="true">
-									Lisbon
+									<!-- Check index.js -->
 								</button>
 
-								<button class="nav-link" id="pills-fav-1-tab" data-bs-toggle="pill"
+								<!-- <button class="nav-link" id="pills-fav-1-tab" data-bs-toggle="pill"
 									data-bs-target="#pills-fav-1" type="button" role="tab" aria-controls="pills-fav1"
 									aria-selected="false">
 									<i class="bi bi-star-fill"></i>
@@ -128,7 +128,7 @@
 									aria-selected="false">
 									<i class="bi bi-star-fill"></i>
 									Porto
-								</button>
+								</button> -->
 							</div>
 						</nav>
 
@@ -145,13 +145,13 @@
 											</button>
 										</div>
 										<div class="daily-slider">
-											<button type="button" class="scroll-left">
+											<button type="button" class="scroll-left" id="btn-left">
 												<i class="bi bi-chevron-left"></i>
 											</button>
 											<div class="daily-slides" id="daily-forecast">
 												<!-- Check dailyForecast.js -->
 											</div>
-											<button type="button" class="scroll-right">
+											<button type="button" class="scroll-right" id="btn-right">
 												<i class="bi bi-chevron-right"></i>
 											</button>
 										</div>
@@ -162,7 +162,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="pills-fav-1" role="tabpanel"
+							<!-- <div class="tab-pane fade" id="pills-fav-1" role="tabpanel"
 								aria-labelledby="pills-fav-1-tab" tabindex="0">
 								...b
 							</div>
@@ -177,7 +177,7 @@
 							<div class="tab-pane fade" id="pills-fav-4" role="tabpanel"
 								aria-labelledby="pills-fav-4-tab" tabindex="0">
 								...e
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -191,12 +191,12 @@
 
 	<script src="js/variables.js" type="text/javascript" defer></script>
 	<script src="js/common.js" type="text/javascript" defer></script>
+	<script src="js/tabsFavorites.js" type="text/javascript" defer></script>
 	<script src="js/index.js" type="text/javascript" defer></script>
 	<script src="js/tempConversion.js" type="text/javascript" defer></script>
 	<script src="js/setWeatherIcons.js" type="text/javascript" defer></script>
 	<script src="js/weeklyForecast.js" type="text/javascript" defer></script>
 	<script src="js/dailyForecast.js" type="text/javascript" defer></script>
-	<script src="js/favorites.js" type="text/javascript" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 		crossorigin="anonymous"></script>
