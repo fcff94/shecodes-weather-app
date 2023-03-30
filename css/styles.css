@@ -9,17 +9,11 @@
   --lightturquoise: #bbded6;
   --mediumturquoise: #00bdaa;
   --turquoise: #61c0bf;
-  /* --turquoisedarker: #9bf4d5; */
   --white: #ffffff;
   --lightgrey: #f8f8f8;
   --grey: #bababa;
   --darkgrey: #9ba6a5;
 }
-
-/* #fcffc1;  yellow*/
-/* #9bf4d5;  light turquoise */
-/* #1dad9b;  turquoise*/
-/* #346357; dark turquoise */
 
 body {
   background-color: #e6fdfb !important;
@@ -29,7 +23,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-bottom: 20px; */
 }
 
 .card-wrapper {
@@ -37,12 +30,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
   margin: 50px 0 20px 0;
 }
 
 .card-weather {
-  /* max-width: 992px; */
   width: 65vw;
   border: none !important;
   border-radius: 25px !important;
@@ -63,7 +54,6 @@ body {
 .card-row .card-column-left {
   width: 35%;
   color: white;
-  /* background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); */
   background: var(--turquoise);
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
@@ -80,6 +70,14 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+/* Removes cancel icon from search input */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }
 
 .card-column-info .search-area .btn-primary {
