@@ -1,5 +1,4 @@
 function displayDailyForecast(resp) {
-  console.log("daily", resp);
   let hourlyInfo = resp.data.hourly;
   let dailyForecastElement = document.querySelector("#daily-forecast");
   let maxHoursResults = hourlyInfo.slice(0, 25);
